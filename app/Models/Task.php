@@ -8,9 +8,31 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'title', 'description', 'completed', 'user_id' ];
+    protected $fillable = [
+        'title',
+        'description',
+        'completed',
+        'user_id',
+    ];
 
-    public function user()
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'completed' => 'boolean',
+        ];
+    }
+
+    /**
+     * Get the user that owns the task.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }

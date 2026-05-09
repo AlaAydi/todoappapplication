@@ -13,7 +13,17 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                outfit: ['Outfit', 'sans-serif'],
             },
+            colors: {
+                primary: '#8b5cf6',
+                secondary: '#ec4899',
+                accent: '#06b6d4',
+                warning: '#f59e0b',
+                success: '#10b981',
+                error: '#ef4444',
+                'bg-dark': '#0f172a',
+            }
         },
     },
 
