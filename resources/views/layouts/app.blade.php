@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Scripts -->
+    <!-- Vite assets are locally built, SRI not required -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -20,7 +20,6 @@
 
         @include('layouts.navigation')
 
-        <!-- Header -->
         @hasSection('header')
             <header class="glass-nav border-none py-8">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,7 +28,6 @@
             </header>
         @endif
 
-        <!-- Content -->
         <main class="py-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 @yield('content')
