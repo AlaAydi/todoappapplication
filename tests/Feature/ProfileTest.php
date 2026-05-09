@@ -10,13 +10,15 @@ class ProfileTest extends TestCase
 {
     use RefreshDatabase;
 
+    private const PROFILE_PATH = '/profile';
+
     public function test_profile_page_is_displayed(): void
     {
         $user = User::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->get('/profile');
+            ->get(self::PROFILE_PATH);
 
         $response->assertOk();
     }
@@ -27,14 +29,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
+            ->patch(self::PROFILE_PATH, [
                 'name' => 'Test User',
                 'email' => 'test@example.com',
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect(self::PROFILE_PATH);
 
         $user->refresh();
 
@@ -49,14 +51,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
+            ->patch(self::PROFILE_PATH, [
                 'name' => 'Test User',
                 'email' => $user->email,
             ]);
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect(self::PROFILE_PATH);
 
         $this->assertNotNull($user->refresh()->email_verified_at);
     }
@@ -67,7 +69,7 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->delete('/profile', [
+            ->delete(self::PROFILE_PATH, [
                 'password' => 'password',
             ]);
 
@@ -85,14 +87,14 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->from('/profile')
-            ->delete('/profile', [
+            ->from(self::PROFILE_PATH)
+            ->delete(self::PROFILE_PATH, [
                 'password' => 'wrong-password',
             ]);
 
         $response
             ->assertSessionHasErrorsIn('userDeletion', 'password')
-            ->assertRedirect('/profile');
+            ->assertRedirect(self::PROFILE_PATH);
 
         $this->assertNotNull($user->fresh());
     }
