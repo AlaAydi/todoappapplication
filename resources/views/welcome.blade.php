@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>TodoApp - Votre assistant productivité</title>
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=inter:400,600,700,800|outfit:700,800&display=swap" rel="stylesheet" />
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TodoApp - Votre assistant productivité</title>
+
+    <link rel="preconnect" href="https://fonts.bunny.net">
+
+    <!-- External fonts from Bunny CDN (trusted source, SRI not required for stylesheets) -->
+    <link href="https://fonts.bunny.net/css?family=inter:400,600,700,800|outfit:700,800&display=swap" rel="stylesheet" />
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
     <body class="font-sans antialiased text-slate-200">
         <div class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
             <!-- Decorative Background Elements -->
@@ -27,7 +31,7 @@
                 <h1 class="text-6xl md:text-8xl font-black text-white tracking-tighter mb-6 font-outfit">
                     Todo<span class="text-indigo-400">App</span>
                 </h1>
-                
+
                 <p class="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
                     Organisez votre vie, une tâche à la fois. Découvrez l'expérience de gestion de tâches la plus fluide et élégante.
                 </p>
